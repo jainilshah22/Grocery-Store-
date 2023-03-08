@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1.R;
+import com.example.project1.adapters.HomeAdapter;
 import com.example.project1.adapters.PopularAdapters;
 import com.example.project1.databinding.FragmentHomeBinding;
+import com.example.project1.models.HomeCategory;
 import com.example.project1.models.PopularModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,11 +29,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    RecyclerView popularRec;
+    RecyclerView popularRec,homeCatRec;
     FirebaseFirestore db;
+
+    //Popular Items
 
     PopularAdapters popularAdapters;
     List<PopularModel> popularModelList;
+
+    //Home Category
+    List<HomeCategory> categoryList;
+    HomeAdapter homeAdapter;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +52,7 @@ public class HomeFragment extends Fragment {
 
 
         popularRec=root.findViewById(R.id.pop_rec);
+        homeCatRec=root.findViewById(R.id.explore_rec);
 
         //popular item
         popularRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
@@ -60,6 +70,32 @@ public class HomeFragment extends Fragment {
                                 PopularModel popularModel=document.toObject(PopularModel.class);
                                 popularModelList.add(popularModel);
                                 popularAdapters.notifyDataSetChanged();
+
+                            }
+                        } else {
+                            Toast.makeText(getActivity(),"Error"+task.getException(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
+
+        //Home Category
+        homeCatRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+        categoryList=new ArrayList<>();
+        homeAdapter=new HomeAdapter(getActivity(),categoryList);
+        homeCatRec.setAdapter(homeAdapter);
+
+        db.collection("HomeCategory")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                HomeCategory homeCategory=document.toObject(HomeCategory.class);
+                                categoryList.add(homeCategory);
+                                homeAdapter.notifyDataSetChanged();
 
                             }
                         } else {
