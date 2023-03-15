@@ -6,9 +6,15 @@
     tools:context=".NewProductsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="New Products" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="300dp"
+            android:src="@mipmap/newproducts"
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
