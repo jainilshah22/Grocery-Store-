@@ -16,7 +16,7 @@
             android:id="@+id/view_img"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:src="@drawable/fruits"/>
 
         <LinearLayout
@@ -34,7 +34,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="24sp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
             <TextView
                 android:fontFamily="@font/alice"
@@ -53,7 +53,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/alice"
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:text="Price $"/>
                 <TextView
                     android:id="@+id/view_price"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/alice"
                     android:layout_width="wrap_content"
@@ -94,11 +94,11 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
                 android:layout_gravity="end"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginRight="5dp"/>
 
         </LinearLayout>
