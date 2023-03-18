@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.project1.R;
 import com.example.project1.adapters.ViewAllAdapter;
@@ -27,6 +29,7 @@ public class ViewAllActivity extends AppCompatActivity {
     ViewAllAdapter viewAllAdapter;
     RecyclerView recyclerView;
     Toolbar toolbar;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,14 @@ public class ViewAllActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        progressBar=findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.VISIBLE);
+
         firestore=FirebaseFirestore.getInstance();
 
         String type=getIntent().getStringExtra("type");
         recyclerView=findViewById(R.id.view_all_rec);
+        recyclerView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         viewAllModelList=new ArrayList<>();
@@ -58,6 +65,8 @@ public class ViewAllActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel=documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -74,6 +83,8 @@ public class ViewAllActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel=documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -90,6 +101,8 @@ public class ViewAllActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel=documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -106,6 +119,8 @@ public class ViewAllActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel=documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }
@@ -122,6 +137,8 @@ public class ViewAllActivity extends AppCompatActivity {
                         ViewAllModel viewAllModel=documentSnapshot.toObject(ViewAllModel.class);
                         viewAllModelList.add(viewAllModel);
                         viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }

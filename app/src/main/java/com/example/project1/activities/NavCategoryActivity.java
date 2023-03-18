@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.project1.R;
@@ -32,6 +33,7 @@ public class NavCategoryActivity extends AppCompatActivity {
     List<NavCategoryDetailedModel> list;
     NavCategoryDetailedAdapter adapter;
     FirebaseFirestore db;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,11 @@ public class NavCategoryActivity extends AppCompatActivity {
 
         db=FirebaseFirestore.getInstance();
         String type=getIntent().getStringExtra("type");
+        progressBar=findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.VISIBLE);
 
         recyclerView =findViewById(R.id.nav_cat_det_rec);
+        recyclerView.setVisibility(View.GONE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list=new ArrayList<>();
         adapter=new NavCategoryDetailedAdapter(this,list);
@@ -58,6 +63,8 @@ public class NavCategoryActivity extends AppCompatActivity {
                         NavCategoryDetailedModel viewAllModel=documentSnapshot.toObject(NavCategoryDetailedModel.class);
                         list.add(viewAllModel);
                         adapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
 
                 }
