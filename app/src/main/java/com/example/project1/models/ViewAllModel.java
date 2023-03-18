@@ -1,6 +1,8 @@
 package com.example.project1.models;
 
-public class ViewAllModel {
+import java.io.Serializable;
+
+public class ViewAllModel implements Serializable {
 
     String name,description,rating,type,img_url;
     int price;

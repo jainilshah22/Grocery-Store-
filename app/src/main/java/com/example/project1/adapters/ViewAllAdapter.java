@@ -1,6 +1,8 @@
 package com.example.project1.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.project1.R;
+import com.example.project1.activities.DetailedActivity;
 import com.example.project1.models.ViewAllModel;
 
 import java.util.List;
@@ -33,7 +36,7 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewAllAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewAllAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Glide.with(context).load(list.get(position).getImg_url()).into(holder.imageView);
         holder.name.setText(list.get(position).getName());
         holder.description.setText(list.get(position).getDescription());
@@ -46,6 +49,15 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
         if (list.get(position).getType().equals("milk")){
             holder.price.setText(list.get(position).getPrice()+"/litre");
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, DetailedActivity.class);
+                intent.putExtra("detail",list.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

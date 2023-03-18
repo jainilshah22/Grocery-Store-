@@ -1,17 +1,26 @@
 package com.example.project1.models;
 
 public class NavCategoryModel {
-    String  name,description,img_url,discount;
+    String  name,description,img_url,discount,type;
 
     public NavCategoryModel() {
 
     }
 
-    public NavCategoryModel(String name, String description, String img_url, String discount) {
+    public NavCategoryModel(String name, String description, String img_url, String discount, String type) {
         this.name = name;
         this.description = description;
         this.img_url = img_url;
         this.discount = discount;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {
