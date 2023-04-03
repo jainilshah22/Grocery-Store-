@@ -159,6 +159,11 @@
                 android:fontFamily="@font/alice"/>
 
         </LinearLayout>
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_delete_24"/>
 
     </LinearLayout>
 

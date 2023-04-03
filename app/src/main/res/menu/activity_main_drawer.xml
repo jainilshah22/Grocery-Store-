@@ -32,5 +32,7 @@
             android:id="@+id/nav_my_carts"
             android:icon="@drawable/mycart"
             android:title="@string/my_carts" />
+
+
     </group>
 </menu>

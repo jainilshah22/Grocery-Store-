@@ -1,10 +1,13 @@
 package com.example.project1.models;
 
-public class MyCartModel {
+import java.io.Serializable;
+
+public class MyCartModel implements Serializable {
 
     String productName,currentData,currentTime,totalQuantity;
     int productPrice;
     int totalPrice;
+    String documentId;
 
     public MyCartModel() {
     }
@@ -16,6 +19,14 @@ public class MyCartModel {
         this.currentTime = currentTime;
         this.totalQuantity = totalQuantity;
         this.totalPrice = totalPrice;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getProductName() {

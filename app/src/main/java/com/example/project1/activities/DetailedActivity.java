@@ -133,15 +133,12 @@ public class DetailedActivity extends AppCompatActivity {
         cartMap.put("totalPrice",totalPrice);
 
 
-        firestore.collection("AddToCart").document(auth.getCurrentUser().getUid()).collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+        firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid()).collection("AddToCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 if(task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Added To A Cart", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailedActivity.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
                     finish();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });

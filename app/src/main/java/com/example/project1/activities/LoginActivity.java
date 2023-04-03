@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project1.MainActivity;
 import com.example.project1.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -57,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 loginUser();
                 progressBar.setVisibility(View.VISIBLE);
+                Intent i = new Intent(LoginActivity.this , MainActivity.class);
+                startActivity(i);
 
             }
         });
@@ -91,6 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(i);
 
                         }else {
                             progressBar.setVisibility(View.GONE);
